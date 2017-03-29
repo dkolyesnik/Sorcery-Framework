@@ -1,0 +1,13 @@
+{
+	"name" : "sorcery-framework",
+	"url" : "",
+	"license" : "MIT",
+    "description" : "Component based gamr framework",
+	"tags": ["entity", "component", "system"],
+    "version" : "0.9.0",
+	"releasenote" : "",
+	"contributors" : ["dkolyesnik"],
+	"dependencies": {
+		"sorcery-core": ""
+	  }
+}
