@@ -1,6 +1,6 @@
 package sorcery.framework.bundles.screenManager;
 import sorcery.core.interfaces.ICore;
-import sorcery.framework.bundles.screenManager.interfaces.IScreenManager;
+import sorcery.core.interfaces.IEntity;
 
 /**
  * ...
@@ -8,8 +8,8 @@ import sorcery.framework.bundles.screenManager.interfaces.IScreenManager;
  */
 class ScreenManagerTools
 {
-	public static function getScreenManager(core:ICore):IScreenManager
+	public static function getScreenManager(core:ICore):IEntity
 	{
-		return core.framework.getObj(ScreenManager.NAME);
+		return core.framework.getObj(ScreenManagerBundle.screenManagerName);
 	}
 }

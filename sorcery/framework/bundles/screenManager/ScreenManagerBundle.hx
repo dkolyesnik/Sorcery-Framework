@@ -2,7 +2,7 @@ package sorcery.framework.bundles.screenManager;
 
 import sorcery.core.Bundle;
 import sorcery.core.abstracts.FrameworkObjName;
-import sorcery.framework.bundles.screenManager.interfaces.IScreenManager;
+import sorcery.core.interfaces.IEntity;
 
 /**
  * ...
@@ -10,6 +10,7 @@ import sorcery.framework.bundles.screenManager.interfaces.IScreenManager;
  */
 class ScreenManagerBundle extends Bundle 
 {
+	inline public static var screenManagerName = new FrameworkObjName<IEntity>("screenManager");
 	
 	public function new() 
 	{
@@ -19,14 +20,13 @@ class ScreenManagerBundle extends Bundle
 	override function onInitialize():Void
 	{
 		//executed when Bundle is initialized
-		core.framework.setObj(ScreenManager.NAME, new ScreenManager(core));
-		//core.framework.getObj(SCREEN_MANAGER).
+		core.framework.setObj(screenManagerName, core.allocateEntity(screenManagerName));
 	}
 	
 	override function setupRequirements():Void
 	{
 		//names of required Bundles
-		requiresBundles([]);
+		//requiresBundles([]);
 	}
 	
 	override function setupDelayedInitialization():Void

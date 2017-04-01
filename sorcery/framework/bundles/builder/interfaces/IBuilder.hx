@@ -8,5 +8,5 @@ import sorcery.core.interfaces.IParent;
  */
 interface IBuilder extends IParent
 {
-	function build(entityId:String, ?name:String, ?entity:IEntity, ?params:Dynamic, isGroup:Bool = false):IEntity;
+	function build(entityType:String, ?name:String, ?entity:IEntity, ?params:Dynamic, isGroup:Bool = false):IEntity;
 }

@@ -18,7 +18,7 @@ class BuilderComponent extends Behavior
 		Contract.requires(Priority.validate(p_priority));
 		
 		super(p_core);
-		addHandler(new TypedHandlerData(BuilderEvent.BUILD, createLink("#." + Builder.NAME), onBuild, p_priority));
+		addHandler(new TypedHandlerData(BuilderEvent.BUILD, createLink("@"), onBuild, p_priority));
 	}
 	
 	function onBuild(e:BuilderEvent):Void
