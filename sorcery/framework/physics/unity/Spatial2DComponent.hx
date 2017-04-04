@@ -1,4 +1,4 @@
-package sorcery.framework.physics;
+package sorcery.framework.physics.unity;
 
 import sorcery.core.Component;
 import sorcery.core.CoreNames;
@@ -13,11 +13,11 @@ import unityengine.*;
  * ...
  * @author Dmitriy Kolesnik
  */
-class UnitySpatial2DComponent extends Component implements ISpatial2DComponent
+class Spatial2DComponent extends Component implements ISpatial2DComponent
 {
 	inline static var NAME = "spatial";
 	var _go:GameObject;
-	var _parent2DSpatial:UnitySpatial2DComponent;
+	var _parent2DSpatial:Spatial2DComponent;
 	var _initialized:Bool = false;
 	
 	public function new(p_core:ICore) 

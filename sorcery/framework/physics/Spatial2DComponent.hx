@@ -5,8 +5,8 @@ package sorcery.framework.physics;
  */
 typedef Spatial2DComponent = 
 #if flash
-sorcery.framework.physics.FlashSpatial2DComponent;
+sorcery.framework.physics.flash.Spatial2DComponent;
 #elseif cs
-sorcery.framework.physics.UnitySpatial2DComponent; 
+sorcery.framework.physics.unity.Spatial2DComponent; 
 #end
 

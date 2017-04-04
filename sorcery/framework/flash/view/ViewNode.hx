@@ -21,7 +21,7 @@ class ViewNode extends SystemNode
 	@:sorcery_prepare(":spatial")
 	var spatial:ISpatial2DComponent;
 
-	var _do:DisplayObject;
+	var _do:Sprite;
 
 	public function new(p_core:ICore) 
 	{
@@ -54,7 +54,7 @@ class ViewNode extends SystemNode
 		_do.rotation = spatial.globalRotation;
 	}
 	
-	public function setDisplayObject(p_do:DisplayObject) 
+	public function setDisplayObject(p_do:Sprite) 
 	{
 		if (_do != null && _do.parent != null)
 		{

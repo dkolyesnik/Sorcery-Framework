@@ -1,4 +1,4 @@
-package sorcery.framework.physics;
+package sorcery.framework.physics.flash;
 import sorcery.core.abstracts.Agenda;
 #if flash
 import flash.geom.Point;
@@ -14,11 +14,11 @@ using sorcery.core.tools.EntityTools;
  * ...
  * @author Dmitriy Kolesnik
  */
-class FlashSpatial2DComponent extends Component implements ISpatial2DComponent
+class Spatial2DComponent extends Component implements ISpatial2DComponent
 {
 	inline static var NAME = "spatial";
 	var _do:Sprite;
-	var _parent2DSpatial:FlashSpatial2DComponent;
+	var _parent2DSpatial:Spatial2DComponent;
 	
 	public function new(p_core:ICore) 
 	{
