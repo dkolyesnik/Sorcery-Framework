@@ -16,14 +16,15 @@ class BuildUponAddedToRootComponent extends Component
 	var isGroup:Bool;
 	
 	@:injectArguments
-	public function new(p_core:ICore, objectName:String, objectType:String, ?params:Dynamic, isGroup:Bool = false) 
+	public function new(p_core:ICore, objectType:String,  ?objectName:String, ?params:Dynamic, isGroup:Bool = false) 
 	{
 		super(p_core);
 	}
 	
 	override function onAddedToRoot():Void 
 	{
-		parent.addChild(core.getBuilder().build(objectType, core.allocateEntity(objectName), params, isGroup););
+		var ent = core.getBuilder().build(objectType, core.allocateEntity(objectName), params, isGroup);
+		parent.addChild(ent);
 	}
 	
 	override function onRemovedFromRoot():Void 

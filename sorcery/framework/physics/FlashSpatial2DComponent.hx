@@ -3,11 +3,10 @@ import sorcery.core.abstracts.Agenda;
 #if flash
 import flash.geom.Point;
 import sorcery.core.Component;
-import sorcery.core.CoreNames;
+import sorcery.framework.physics.Points.Point2D;
 import sorcery.core.interfaces.ICore;
 import sorcery.core.interfaces.IEntity;
 import sorcery.framework.physics.interfaces.ISpatial2DComponent;
-import sorcery.math.Points.Point2D;
 import flash.display.DisplayObjectContainer;
 import flash.display.Sprite;
 using sorcery.core.tools.EntityTools;
