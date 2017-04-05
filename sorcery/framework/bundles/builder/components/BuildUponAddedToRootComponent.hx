@@ -24,6 +24,7 @@ class BuildUponAddedToRootComponent extends Component
 	override function onAddedToRoot():Void 
 	{
 		var ent = core.getBuilder().build(objectType, core.allocateEntity(objectName), params, isGroup);
+		objectName = ent.name;
 		parent.addChild(ent);
 	}
 	
