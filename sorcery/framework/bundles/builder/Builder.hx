@@ -23,15 +23,8 @@ class Builder extends Entity implements IBuilder
 	
 	/* INTERFACE sorcery.framework.bundles.entityBuilder.interfaces.IEntityBuilder */
 	
-	public function build(entityType:String, ?name:String, ?entity:IEntity, ?param:Dynamic, isGroup:Bool = false):IEntity
+	public function build(entityType:String, entity:IEntity, ?param:Dynamic):IEntity
 	{
-		if (entity == null)
-			entity = core.allocateEntity(name);
-		else if(name != null)
-			entity.setName(name);
-		if (isGroup)
-			core.wrapInGroup(entity);
-		
 		var e = BuilderEvent.getBuildEvent(entityType, entity, param);
 		sendEvent(e);
 		var entity = e.entity;
@@ -39,4 +32,10 @@ class Builder extends Entity implements IBuilder
 		return entity;
 	}
 	
+	public function allocateEntity(?p_name:String):BuildedEntity
+	{
+		var ent = new BuildedEntity(core);
+		ent.setName(p_name);
+		return ent;
+	}
 }
