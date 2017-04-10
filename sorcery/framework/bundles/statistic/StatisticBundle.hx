@@ -17,6 +17,7 @@ class StatisticBundle extends Bundle
 	override function onInitialize():Void
 	{
 		//executed when Bundle is initialized
+		core.framework.setObj(Statistic.NAME, new Statistic(core));
 	}
 	
 	override function onUninitialize():Void
@@ -32,7 +33,7 @@ class StatisticBundle extends Bundle
 	override function setupRequirements():Void
 	{
 		//names of required Bundles
-		requiresBundles([UserDataBundle.NAME]);
+		//requiresBundles([UserDataBundle.NAME]);
 	}
 	
 	override function setupDelayedInitialization():Void

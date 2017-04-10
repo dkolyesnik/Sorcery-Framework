@@ -23,7 +23,7 @@ class RecordComponent extends Behavior
     private var _temporary : Bool;
     private var _needSave : Bool;
     
-    public function new(p_core:ICore, p_default : Float = 0, p_temporary : Bool = false, p_needSave : Bool = true)
+    public function new(p_core:ICore, p_default : Float = 0., p_temporary : Bool = false, p_needSave : Bool = true)
     {
         super(p_core);
         _default = p_default;
@@ -66,7 +66,7 @@ class RecordComponent extends Behavior
 		}
 	}
     
-	private function _addHandlers() : Void
+	function _addHandlers() : Void
     {
         if (!_temporary)
         {
@@ -82,7 +82,7 @@ class RecordComponent extends Behavior
         }
     }
     
-    private function _reset(e:Event) : Void
+    function _reset(e:Event) : Void
     {
         _value = _default;
     }

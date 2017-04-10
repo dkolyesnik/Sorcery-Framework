@@ -22,11 +22,11 @@ class BuilderEvent extends Event implements IInjectArguments
 	
 	public var entityType(default, null):String;
 	public var entity:IEntity;
-	public var params:Dynamic;
+	public var params:Map<String, Any>;
 	var _poolArray:BuilderEventPool;
 	
 	@:injectArguments
-	public function new(type:String, entityType:String, entity:IEntity, ?params:Dynamic) 
+	public function new(type:String, entityType:String, entity:IEntity, ?params:Map<String, Any>) 
 	{
 		super(type);
 	}
@@ -40,7 +40,7 @@ class BuilderEvent extends Event implements IInjectArguments
 	}
 	
 	static var _buildPool:BuilderEventPool = [];
-	public static function getBuildEvent(entityType:String, entity:IEntity, ?params:Dynamic):BuilderEvent
+	public static function getBuildEvent(entityType:String, entity:IEntity, ?params:Map<String, Any>):BuilderEvent
 	{
 		var e;
 		if (_buildPool.length > 0)

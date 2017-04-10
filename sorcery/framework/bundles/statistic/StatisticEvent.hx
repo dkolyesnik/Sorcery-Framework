@@ -26,6 +26,7 @@ class StatisticEvent extends Event
 	
 	inline public static function getSubmitEvent(p_varName:String, p_value:Float):StatisticEvent
 	{
+		//TODO pool
 		return new StatisticEvent(SUBMIT, p_varName, p_value);
 	}
 	

@@ -9,6 +9,6 @@ import sorcery.framework.bundles.builder.BuildedEntity;
  */
 interface IBuilder extends IParent
 {
-	function build(entityType:String, entity:IEntity, ?param:Dynamic):IEntity;
+	function build(entityType:String, entity:IEntity, ?param:Map<String, Any>):IEntity;
 	function allocateEntity(?p_name:String):BuildedEntity;
 }

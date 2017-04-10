@@ -74,6 +74,7 @@ class BuildedEntity extends Entity
 			{
 				super.removeChild(child);
 			}
+			_childrenAddedByBuilder = [];
 			_isBuilded = false;
 		}
 	}

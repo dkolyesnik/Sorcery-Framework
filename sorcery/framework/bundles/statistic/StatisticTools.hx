@@ -1,6 +1,6 @@
 package sorcery.framework.bundles.statistic;
 import sorcery.core.interfaces.ICore;
-import sorcery.framework.bundles.statistic.records.IStatistic;
+import sorcery.framework.bundles.statistic.interfaces.IStatistic;
 
 /**
  * ...

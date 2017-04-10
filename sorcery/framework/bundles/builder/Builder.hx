@@ -23,7 +23,7 @@ class Builder extends Entity implements IBuilder
 	
 	/* INTERFACE sorcery.framework.bundles.entityBuilder.interfaces.IEntityBuilder */
 	
-	public function build(entityType:String, entity:IEntity, ?param:Dynamic):IEntity
+	public function build(entityType:String, entity:IEntity, ?param:Map<String, Any>):IEntity
 	{
 		var e = BuilderEvent.getBuildEvent(entityType, entity, param);
 		sendEvent(e);
