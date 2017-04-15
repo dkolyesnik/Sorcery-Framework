@@ -1,6 +1,8 @@
-package;
+package sorcery.framework.components;
 
+import sorcery.core.Behavior;
 import sorcery.core.Component;
+import sorcery.core.HandlerData;
 import sorcery.core.interfaces.IComponent;
 import sorcery.core.interfaces.ICore;
 import sorcery.macros.Nullsafety.*;
@@ -9,7 +11,7 @@ using Lambda;
  * ...
  * @author Dmitriy Kolesnik
  */
-class PrototypeComponent extends Component
+class PrototypeComponent extends Behavior
 {
 	public var _onActivate:IComponent->Void;
 	public var _onDeactivate:IComponent->Void;
@@ -56,5 +58,7 @@ class PrototypeComponent extends Component
 		newPrototype._onRemovedFromRoot = _onRemovedFromRoot;
 		newPrototype._onFocus = _onFocus;
 		newPrototype._onLostFocus = _onLostFocus;
+		//TOCO clone handlers
+		return newPrototype;
 	}
 }

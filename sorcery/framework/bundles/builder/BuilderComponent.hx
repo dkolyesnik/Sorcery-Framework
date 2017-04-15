@@ -17,7 +17,7 @@ using sorcery.framework.bundles.builder.BuilderTools;
   */
 class BuilderComponent extends Behavior
 {
-	var buidler(default, null):IBuilder;
+	var builder(default, null):IBuilder;
 	public function new(p_core:ICore, p_priority:Priority = 0) 
 	{
 		Contract.requires(Priority.validate(p_priority));
@@ -29,12 +29,12 @@ class BuilderComponent extends Behavior
 	override function onAddedToRoot():Void 
 	{
 		super.onAddedToRoot();
-		buidler = core.getBuilder();
+		builder = core.getBuilder();
 	}
 	
 	override function onRemovedFromRoot():Void 
 	{
-		buidler = null;
+		builder = null;
 		super.onRemovedFromRoot();
 	}
 	
