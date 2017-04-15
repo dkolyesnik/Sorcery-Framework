@@ -1,5 +1,6 @@
 package sorcery.framework.components;
 import sorcery.core.interfaces.IEntity;
+import sorcery.framework.components.PropertyComponent.PropertyName;
 using sorcery.core.tools.EntityTools;
 /**
  * ...
@@ -7,7 +8,7 @@ using sorcery.core.tools.EntityTools;
  */
 class PropertiesTools
 {
-	public static function getProperties(entity:IEntity):PropertyComponent
+	inline public static function getProperties(entity:IEntity):PropertyComponent
 	{
 		return entity.findChildAs("_properties", PropertyComponent);
 	}
