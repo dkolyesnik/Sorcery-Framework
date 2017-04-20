@@ -4,7 +4,7 @@ package sorcery.framework.bundles.stats;
  * ...
  * @author Dmitriy Kolesnik
  */
-class Stat
+class StatFormula
 {
 
 	public function new() 
