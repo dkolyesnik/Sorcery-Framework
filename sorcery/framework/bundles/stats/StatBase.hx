@@ -14,9 +14,9 @@ class StatBase implements IStat {
 	
 	var _value:Float;
 	
-	public function new(formula:StatFormula) {
+	public function new(defaultValue:Float, formula:StatFormula) {
 		_formula = formula;
-		_value = 0.;
+		_value = defaultValue;
 	}
 
 	public function setManager(manager:IStatManager):Void {

@@ -8,8 +8,8 @@ import sorcery.framework.bundles.stats.interfaces.IStat;
  */
 class StatSum  extends StatBase{
 	
-	public function new(formula:StatFormula) {
-		super(formula);
+	public function new(defaultValue:Float, formula:StatFormula) {
+		super(defaultValue, formula);
 	}
 	
 	override public function addValue(value:Float):Void {
@@ -21,6 +21,6 @@ class StatSum  extends StatBase{
 	}
 
 	override public function clone():StatBase {
-		return new StatSum(_formula);
+		return new StatSum(_value, _formula);
 	}
 }

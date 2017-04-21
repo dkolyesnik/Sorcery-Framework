@@ -15,12 +15,7 @@ class StatCatalog implements IStatCatalog{
 	}
 
 	public function createStat(statId:StatId):StatBase {
-		if (_stats.exists(statId)){
-			return _stats[statId].clone();
-		} else {
-			throw "Error: stat is not registered";
-			return null;
-		}
+		return _stats[statId].clone();
 	}
 
 	public function registerStat(statId:StatId, stat:StatBase):StatCatalog {
@@ -32,9 +27,10 @@ class StatCatalog implements IStatCatalog{
 	}
 	
 	public function getFormula(statId:StatId):StatFormula {
-		if (_stats.exists(statId))
-			return _stats[statId].getFormula();
-		else
-			throw "Error: stat is not registered";
+		return _stats[statId].getFormula();
+	}
+	
+	public function getDefaultValue(statId:StatId):Float {
+		return _stats[statId].getRawValue();
 	}
 }
