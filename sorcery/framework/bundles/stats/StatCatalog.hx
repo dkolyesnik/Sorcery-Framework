@@ -1,64 +1,40 @@
 package sorcery.framework.bundles.stats;
 import sorcery.framework.bundles.stats.abstracts.Stat;
 import sorcery.framework.bundles.stats.abstracts.StatId;
+import sorcery.framework.bundles.stats.interfaces.IStatCatalog;
 
 /**
  * ...
  * @author Dmitriy Kolesnik
  */
-class StatCatalog{
+class StatCatalog implements IStatCatalog{
 	var _stats:Map<StatId, StatBase>;
-	var _defaultStat:StatBase;
+	
 	public function new() {
 		_stats = new Map();
-		_defaultStat = new StatBase(new StatFormula());
 	}
 
 	public function createStat(statId:StatId):StatBase {
 		if (_stats.exists(statId)){
 			return _stats[statId].clone();
 		} else {
-			return _defaultStat.clone();
+			throw "Error: stat is not registered";
+			return null;
 		}
 	}
 
-	public function getFormula(statId:StatId):StatFormula {
-		if (_stats.exists(statId))
-			_stats[statId].getFormula();
-		else
-			_defaultStat.getFormula();
-	}
-	
-	//public function registerDefaultStat(stat:StatBase):StatCatalog{
-		//_defaultStat
-	//}
-	
-	public function registerStat(stat:StatBase):StatCatalog {
-		if (_stats.exists(stat.getStatId())){
+	public function registerStat(statId:StatId, stat:StatBase):StatCatalog {
+		if (_stats.exists(statId)){
 			throw "Error: such stat is already registered in catalog";
 		}
-	}
-	public function unregisterStat(statId:StatId):StatCatalog {
-		
+		_stats[statId] = stat;
+		return this;
 	}
 	
-
-	//public 	function registerFormula(statId:StatId, formula:StatFormula):Void
-	//{
-		//if (_stats.exists(statId)) {
-			//trace("Error: dublicate stat name");
-		//} else {
-			//_stats[statId] = stat;
-		//}
-	//}
-//
-	//public 	function unregisterFormula(statId:StatId):Void
-	//{
-		//_stats.remove(statId);
-	//}
-//
-	//function getFormula(statId:StatId):StatFormula{
-		//return _stats.exists(statId) ? _stats[statId] : _defaultStat;
-	//}
-
+	public function getFormula(statId:StatId):StatFormula {
+		if (_stats.exists(statId))
+			return _stats[statId].getFormula();
+		else
+			throw "Error: stat is not registered";
+	}
 }

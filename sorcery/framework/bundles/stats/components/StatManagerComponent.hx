@@ -11,30 +11,16 @@ using sorcery.framework.bundles.stats.StatsTools;
  * ...
  * @author Dmitriy Kolesnik
  */
-class StatManagerComponent extends Component implements IStatManager
+class StatManagerComponent extends Component
 {
-	public var statManager(default, null):StatManager;
-	public function new(p_core:ICore, ?catalog:StatCatalog) 
+	public var statManager(default, null):IStatManager;
+	public function new(p_core:ICore, ?p_statManager:IStatManager) 
 	{
 		super(p_core);
-		statManager = new StatManager(catalog == null ? core.getStatCatalog() : catalog);
-	}
-	
-	
-	/* INTERFACE sorcery.framework.bundles.stats.interfaces.IStatManager */
-	
-	public function getStat(statId:StatId):Stat {
-		return statManager.getStat(statId);
-	}
-	
-	public function addMod(mod:StatMod):IStatManager {
-		statManager.addMod(mod);
-		return this;
-	}
-	
-	public function removeMod(mod:StatMod):IStatManager {
-		statManager.removeMod(mod);
-		return this;
+		if (p_statManager == null)
+			statManager = new StatManager(core.getStatCatalog());
+		else
+			statManager = p_statManager;
 	}
 	
 }

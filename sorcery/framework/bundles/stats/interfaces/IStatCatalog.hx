@@ -11,7 +11,6 @@ interface IStatCatalog {
 
 	function getFormula(statId:StatId):StatFormula;
 	
-	function registerStat(stat:StatBase):IStatCatalog;
-	function unregisterStat(statId:StatId):IStatCatalog;
+	function registerStat(statId:StatId, stat:StatBase):IStatCatalog;
 	
 }

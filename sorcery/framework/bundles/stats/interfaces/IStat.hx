@@ -5,8 +5,6 @@ import sorcery.macros.Nullsafety.*;
  * @author Dmitriy Kolesnik
  */
 interface IStat {
-	function getStatId():StatId;
-	
 	function getRawValue():Float;
 	
 	function getValue():Float;

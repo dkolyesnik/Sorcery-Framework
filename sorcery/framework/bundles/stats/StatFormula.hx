@@ -1,4 +1,5 @@
 package sorcery.framework.bundles.stats;
+import sorcery.framework.bundles.stats.interfaces.IStatManager;
 
 /**
  * ...
@@ -12,7 +13,7 @@ class StatFormula
 		
 	}
 	
-	public function calculateValue(rawValue:Int, manager:StatManager):Float
+	public function calculateValue(rawValue:Float, manager:IStatManager):Float
 	{
 		return rawValue;
 	}

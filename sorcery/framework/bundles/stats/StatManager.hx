@@ -1,22 +1,25 @@
 package sorcery.framework.bundles.stats;
 import sorcery.framework.bundles.stats.abstracts.Stat;
 import sorcery.framework.bundles.stats.abstracts.StatId;
+import sorcery.framework.bundles.stats.interfaces.IStatCatalog;
 import sorcery.framework.bundles.stats.interfaces.IStatManager;
+import sorcery.framework.bundles.stats.interfaces.IStatMod;
 
 /**
  * ...
  * @author Dmitriy Kolesnik
  */
 class StatManager implements IStatManager {
-	var _catalog:StatCatalog;
+	var _catalog:IStatCatalog;
 	var _stats:Map<StatId, StatBase>;
-	var _mods:Array<StatMod>;
-	public function new(catalog:StatCatalog) {
+	var _mods:Array<IStatMod>;
+	public function new(catalog:IStatCatalog) {
 		_catalog = catalog;
-		_reset();
+		_stats = new Map();
+		_mods = [];
 	}
 
-	public function getCatalog():StatCatalog {
+	public function getCatalog():IStatCatalog {
 		return _catalog;
 	}
 
@@ -24,34 +27,44 @@ class StatManager implements IStatManager {
 		return _getStat(statId);
 	}
 
-	public function addMod(mod:StatMod):IStatManager {
+	public function addMod(mod:IStatMod):IStatManager {
 		_mods.push(mod);
-		for (v in mod.values) {
-			var st = _getStat(v.statId);
-			st.add(v.value);
-		}
+		mod.setManager(this);
 		return this;
 	}
 
-	public function removeMod(mod:StatMod):IStatManager {
-		if (_mods.remove(mod)){
-			for (v in mod.values) {
-				var st = _getStat(v.statId);
-				st.remove(v.value);
-			}
-		}
+	
+	public function removeMod(mod:IStatMod):IStatManager {
+		if (_mods.remove(mod))
+			mod.unsetManager(this);
 		return this;
+	}
+
+	function addValue(statId:StatId, value:Float):Void {
+		var statBase = _getStat(statId);
+		statBase.addValue(value);
+	}
+	
+	function removeValue(statId:StatId, value:Float):Void {
+		if (_stats.exists(statId)){
+			_stats[statId].removeValue(value);
+		} else {
+			throw "Error: removing value from a stat that wasn't added";
+		}
+	}
+	
+	function addSubstat(statId:StatId, substatId:StatId):Void {
+		
+	}
+	
+	function removeSubstat(statId:StatId, substatId:StatId):Void {
+		
 	}
 
 	inline function _getStat(statId:StatId):StatBase {
 		if (!_stats.exists(statId))
 			_stats[statId] = _catalog.createStat(statId);
 		return _stats[statId];
-	}
-
-	inline function _reset():Void {
-		_stats = new Map();
-		_mods = [];
 	}
 
 	//public function getStat(statId:StatId):

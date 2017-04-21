@@ -1,5 +1,4 @@
 package sorcery.framework.bundles.stats.abstracts;
-import sorcery.framework.bundles.stats.StatBase;
 import sorcery.framework.bundles.stats.interfaces.IStat;
 import sorcery.macros.Nullsafety.*;
 /**
@@ -8,11 +7,11 @@ import sorcery.macros.Nullsafety.*;
  */
 @:forward
 abstract Stat(IStat) from IStat to IStat {
-	inline public static function new (value:IStat){
+	inline public function new (value:IStat){
 		this = value;
 	}
 	@:to
 	inline public function toFloat():Float{
-		this.getValue();
+		return this.getValue();
 	}
 }

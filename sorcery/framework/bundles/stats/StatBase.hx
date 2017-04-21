@@ -1,26 +1,45 @@
 package sorcery.framework.bundles.stats;
+import sorcery.framework.bundles.stats.StatFormula;
 import sorcery.framework.bundles.stats.abstracts.StatId;
 import sorcery.framework.bundles.stats.interfaces.IStat;
+import sorcery.framework.bundles.stats.interfaces.IStatManager;
 
 /**
  * ...
  * @author Dmitriy Kolesnik
  */
 class StatBase implements IStat {
-	var _statId:StatId;
-	var _manager:StatManager;
+	var _manager:IStatManager;
 	var _formula:StatFormula;
+	
 	var _value:Float;
-	public function new(statId:StatId, formula:StatFormula) {
-		_statId = statId;
+	
+	public function new(formula:StatFormula) {
 		_formula = formula;
 		_value = 0.;
 	}
+
+	public function setManager(manager:IStatManager):Void {
+		_manager = manager;
+	}
 	
-	public function getStatId():StatId {
-		return _statId;
+	public function addValue(value:Float):Void {
+		throw "Error: need override";
 	}
 
+	public function removeValue(value:Float):Void {
+		throw "Error: need override";
+	}
+
+	public function clone():StatBase {
+		throw "Error: need override";
+		return null;
+	}
+	
+	public function getFormula() {
+		return _formula;
+	}
+	
 	public function getRawValue():Float {
 		return _value;
 	}
@@ -29,23 +48,4 @@ class StatBase implements IStat {
 		return _formula.calculateValue(_value, _manager);
 	}
 
-	public function add(value:Float):Void {
-		_value += value;
-	}
-
-	public function remove(value:Float):Void {
-		_value -= value;
-	}
-
-	public function setManager(manager:StatManager):Void {
-		_manager = manager;
-	}
-
-	public function clone():StatBase {
-		return new StatBase();
-	}
-	
-	public function getFormula() {
-		return _formula;
-	}
 }
