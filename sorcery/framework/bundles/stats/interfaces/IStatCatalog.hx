@@ -9,8 +9,9 @@ import sorcery.macros.Nullsafety.*;
 interface IStatCatalog {
 	function createStat(statId:StatId):StatBase;
 
-	function getFormula(statId:StatId):StatFormula;
+	function getStatFormula(statId:StatId):StatFormula;
+	function getSubstatFormula(substatId:StatId):StatFormula;
 	
 	function registerStat(statId:StatId, stat:StatBase):IStatCatalog;
-	
+	function registerSubstat(substatId:StatId, formula:StatFormula):IStatCatalog;
 }

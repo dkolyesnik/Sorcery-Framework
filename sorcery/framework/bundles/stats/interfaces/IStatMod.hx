@@ -6,9 +6,8 @@ import sorcery.framework.bundles.stats.interfaces.IStatManager;
  */
 interface IStatMod {
 	function getManager():IStatManager;
-	/**
-	 * set manager, and add all values and substats to that manager
-	 */
-	function setManager(manager:IStatManager):Void;
-	function unsetManager(manager:IStatManager):Void;
+	function removeFromManager():Void;
+	
+	@:allow(sorcery.framework.bundles.stats.interfaces.IStatManager)
+	private function setManager(manager:IStatManagerInternal):Void;
 }

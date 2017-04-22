@@ -34,6 +34,6 @@ class StatModComponent extends Behavior{
 	}
 	
 	override function onRemovedFromRoot():Void {
-		safeCall((_managerLink.findAs(StatManagerComponent)).statManager.removeMod(_statMod));
+		_statMod.removeFromManager();
 	}
 }

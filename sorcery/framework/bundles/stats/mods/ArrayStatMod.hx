@@ -3,6 +3,7 @@ import sorcery.core.macros.interfaces.IInjectAndCreate;
 import sorcery.framework.bundles.stats.abstracts.StatId;
 import sorcery.framework.bundles.stats.interfaces.IStatCatalog;
 import sorcery.framework.bundles.stats.interfaces.IStatManager;
+import sorcery.framework.bundles.stats.interfaces.IStatManagerInternal;
 import sorcery.framework.bundles.stats.interfaces.IStatMod;
 import sorcery.macros.Nullsafety.*;
 /**
@@ -23,6 +24,10 @@ class ArrayStatMod implements IStatMod {
 		return _manager;
 	}
 
+	public function removeFromManager():Void {
+		safeCall(_manager.removeMod(this));
+	}
+	
 	public function addValue(statId:StatId, value:Float):Void {
 		values.push(new StatValue(statId, value));
 		if (_manager != null) {
@@ -89,7 +94,7 @@ class ArrayStatMod implements IStatMod {
 //
 	//}
 
-	function setManager(manager:IStatManager):Void {
+	function setManager(manager:IStatManagerInternal):Void {
 		if (_manager != null) {
 			if (_manager != manager)
 				_manager.removeMod(this);
@@ -100,14 +105,6 @@ class ArrayStatMod implements IStatMod {
 		_manager = manager;
 		for (v in values)
 			_manager.addValue(v.statId, v.value);
-	}
-
-	function unsetManager(manager:IStatManager):Void {
-		if (manager == _manager) {
-			for (v in values)
-				_manager.removeValue(v.statId, v.value);
-			_manager = null;
-		}
 	}
 
 }

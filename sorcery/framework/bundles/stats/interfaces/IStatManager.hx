@@ -12,9 +12,5 @@ interface IStatManager {
 	function addMod(mod:IStatMod):IStatManager;
 	function removeMod(mod:IStatMod):IStatManager;
 	
-	private function addValue(statId:StatId, value:Float):Void;
-	private function removeValue(statId:StatId, value:Float):Void;
 	
-	private function addSubstat(statId:StatId, substatId:StatId):Void;
-	private function removeSubstat(statId:StatId, substatId:StatId):Void;
 }

@@ -36,7 +36,11 @@ class StatBase implements IStat {
 		return null;
 	}
 	
-	public function getFormula() {
+	public function replaceFormula(formula:StatFormula):Void {
+		_formula = formula;
+	}
+	
+	public function getFormula():StatFormula {
 		return _formula;
 	}
 	

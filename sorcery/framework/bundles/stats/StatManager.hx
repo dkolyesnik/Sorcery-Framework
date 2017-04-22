@@ -3,19 +3,22 @@ import sorcery.framework.bundles.stats.abstracts.Stat;
 import sorcery.framework.bundles.stats.abstracts.StatId;
 import sorcery.framework.bundles.stats.interfaces.IStatCatalog;
 import sorcery.framework.bundles.stats.interfaces.IStatManager;
+import sorcery.framework.bundles.stats.interfaces.IStatManagerInternal;
 import sorcery.framework.bundles.stats.interfaces.IStatMod;
 
 /**
  * ...
  * @author Dmitriy Kolesnik
  */
-class StatManager implements IStatManager {
+class StatManager implements IStatManager implements IStatManagerInternal {
 	var _catalog:IStatCatalog;
 	var _stats:Map<StatId, StatBase>;
+	var _substats:Map<StatId, SubstatId>;
 	var _mods:Array<IStatMod>;
 	public function new(catalog:IStatCatalog) {
 		_catalog = catalog;
 		_stats = new Map();
+		_substats = new Map();
 		_mods = [];
 	}
 
@@ -33,32 +36,36 @@ class StatManager implements IStatManager {
 		return this;
 	}
 
-	
 	public function removeMod(mod:IStatMod):IStatManager {
 		if (_mods.remove(mod))
 			mod.unsetManager(this);
 		return this;
 	}
 
-	function addValue(statId:StatId, value:Float):Void {
+	public function addValue(statId:StatId, value:Float):Void {
 		var statBase = _getStat(statId);
 		statBase.addValue(value);
 	}
-	
-	function removeValue(statId:StatId, value:Float):Void {
-		if (_stats.exists(statId)){
+
+	public function removeValue(statId:StatId, value:Float):Void {
+		if (_stats.exists(statId)) {
 			_stats[statId].removeValue(value);
 		} else {
 			throw "Error: removing value from a stat that wasn't added";
 		}
 	}
-	
-	function addSubstat(statId:StatId, substatId:StatId):Void {
-		
+
+	public function addSubstat(statId:StatId, substatId:StatId):Void {
+		if (_substats.exists(statId)){
+			var substatIds = _substats[statId];
+			
+		}
+		var statBase = _getStat(statId);
+		statBase
 	}
-	
-	function removeSubstat(statId:StatId, substatId:StatId):Void {
-		
+
+	public function removeSubstat(statId:StatId, substatId:StatId):Void {
+
 	}
 
 	inline function _getStat(statId:StatId):StatBase {
