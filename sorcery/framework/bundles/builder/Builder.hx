@@ -13,7 +13,7 @@ import sorcery.framework.bundles.builder.interfaces.IBuilder;
 @:keep
 class Builder extends Entity implements IBuilder
 {
-	public static var NAME = new FrameworkObjName<IBuilder>("builder");
+	public static var NAME = new FrameworkObjName<Builder>("builder");
 	
 	public function new(p_core:ICore) 
 	{

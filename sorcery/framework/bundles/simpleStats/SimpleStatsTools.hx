@@ -8,9 +8,9 @@ import sorcery.framework.bundles.simpleStats.interfaces.IStatCatalog;
  * ...
  * @author Dmitriy Kolesnik
  */
-class StatsTools{
+class SimpleStatsTools{
 
-	inline public static function getStatCatalog(core:ICore):IStatCatalog {
+	public static function getStatCatalog(core:ICore):IStatCatalog {
 		return core.framework.getObj(StatCatalogComponent.NAME).catalog;
 	}
 	

@@ -12,7 +12,7 @@ import sorcery.framework.bundles.statistic.records.RecordComponent;
  */
 class Statistic extends Entity implements IStatistic
 {
-	public static var NAME(default, never) = new FrameworkObjName<IStatistic>("statistic");
+	public static var NAME(default, never) = new FrameworkObjName<Statistic>("statistic");
 	
 	public function new(p_core:ICore) 
 	{

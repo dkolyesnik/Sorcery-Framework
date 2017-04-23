@@ -18,7 +18,7 @@ import sorcery.framework.bundles.userData.misc.DataHolder;
  */
 class UserData extends Entity implements IUserData
 {
-	public static var NAME(default, null) = new FrameworkObjName<IUserData>("userData");
+	public static var NAME(default, null) = new FrameworkObjName<UserData>("userData");
 	
 	public var userHolder(default, null):DataHolder;
 	public var globalHolder(default, null):DataHolder;

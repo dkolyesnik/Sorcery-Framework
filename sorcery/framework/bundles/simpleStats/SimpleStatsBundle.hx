@@ -7,7 +7,7 @@ import sorcery.core.Bundle;
  * ...
  * @author Dmitriy Kolesnik
  */
-class StatsBundle extends Bundle {
+class SimpleStatsBundle extends Bundle {
 
 	public function new() {
 		super();
