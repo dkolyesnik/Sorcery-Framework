@@ -1,4 +1,4 @@
-package;
+package sorcery.framework.bundles.stats.abstracts;
 import sorcery.macros.Nullsafety.*;
 /**
  * ...

@@ -2,6 +2,7 @@ package sorcery.framework.bundles.stats;
 import sorcery.framework.bundles.stats.StatFormula;
 import sorcery.framework.bundles.stats.abstracts.Stat;
 import sorcery.framework.bundles.stats.abstracts.StatId;
+import sorcery.framework.bundles.stats.abstracts.SubstatId;
 import sorcery.framework.bundles.stats.interfaces.IStatCatalog;
 
 /**
@@ -35,12 +36,12 @@ class StatCatalog implements IStatCatalog{
 		return _stats[statId].getFormula();
 	}
 	
-	public function getSubstatFormula(substatId:StatId):StatFormula {
+	public function getSubstatFormula(substatId:SubstatId):StatFormula {
 		return _substats[substatId];
 	}
 	
-	public function registerSubstat(substatId:StatId, formula:StatFormula):IStatCatalog {
-		if (_substats.exists(statId))
+	public function registerSubstat(substatId:SubstatId, formula:StatFormula):IStatCatalog {
+		if (_substats.exists(substatId))
 			throw "Error: such substat is already registered in catalog";
 		_substats[substatId] = formula;
 		return this;

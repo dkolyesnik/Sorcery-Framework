@@ -1,4 +1,4 @@
-package sorcery.framework.bundles.stats;
+package sorcery.framework.bundles.stats.statBase;
 import sorcery.framework.bundles.stats.abstracts.StatId;
 import sorcery.framework.bundles.stats.interfaces.IStat;
 
