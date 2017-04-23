@@ -9,11 +9,12 @@ import sorcery.core.Event;
 import sorcery.core.TypedHandlerData;
 import sorcery.core.interfaces.ICore;
 import sorcery.framework.bundles.statistic.StatisticEvent;
+import sorcery.framework.bundles.statistic.interfaces.IRecord;
 
 typedef RecordFunction = Float->Float->Float;
 
 @:allow(sorcery.framework.bundles.statistic.records.RecordHandlerData)
-class RecordComponent extends Behavior
+class RecordComponent extends Behavior implements IRecord
 {
     // ==============================================================================
     // PRIVATE & PROTECTED VARS
@@ -46,7 +47,7 @@ class RecordComponent extends Behavior
         _value = val;
     }
 	
-	public function listenTo(varName:String, func:RecordFunction):RecordComponent
+	public function listenTo(varName:String, func:RecordFunction):IRecord
 	{
 		addHandler(new RecordHandlerData(this, createLink("@"), varName, func));
 		return this;

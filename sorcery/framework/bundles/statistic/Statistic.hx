@@ -3,9 +3,10 @@ package sorcery.framework.bundles.statistic;
 import sorcery.core.Entity;
 import sorcery.core.abstracts.FrameworkObjName;
 import sorcery.core.interfaces.ICore;
+import sorcery.framework.bundles.statistic.interfaces.IRecord;
 import sorcery.framework.bundles.statistic.interfaces.IStatistic;
 import sorcery.framework.bundles.statistic.records.RecordComponent;
-
+using sorcery.core.tools.EntityTools;
 /**
  * ...
  * @author Dmitriy Kolesnik
@@ -36,7 +37,11 @@ class Statistic extends Entity implements IStatistic
 	public function createRecord(recordName:String, defaultValue:Float = 0., temporary:Bool = false, needSave:Bool = true):RecordComponent
 	{
 		var record = new RecordComponent(core, defaultValue, temporary, needSave);
-		addChild(record.setName("st_tLevelProfit"));
+		addChild(record.setName(recordName));
 		return record;
+	}
+	
+	public function getRecord(recordName:String):IRecord {
+		return this.findChildAs(recordName, RecordComponent);
 	}
 }

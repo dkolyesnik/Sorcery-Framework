@@ -1,6 +1,7 @@
 package sorcery.framework.bundles.stats;
 import sorcery.framework.bundles.stats.abstracts.Stat;
 import sorcery.framework.bundles.stats.abstracts.StatId;
+import sorcery.framework.bundles.stats.abstracts.SubstatId;
 import sorcery.framework.bundles.stats.interfaces.IStatCatalog;
 import sorcery.framework.bundles.stats.interfaces.IStatManager;
 import sorcery.framework.bundles.stats.interfaces.IStatManagerInternal;

@@ -1,5 +1,4 @@
 package sorcery.framework.bundles.stats.components;
-import sorcery.framework.bundles.stats.StatMod;
 import sorcery.framework.bundles.stats.abstracts.StatId;
 
 import sorcery.core.Component;

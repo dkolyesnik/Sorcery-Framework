@@ -6,7 +6,7 @@ import sorcery.framework.bundles.simpleStats.StatManager;
 import sorcery.core.Component;
 import sorcery.core.interfaces.ICore;
 import sorcery.framework.bundles.simpleStats.interfaces.IStatManager;
-using sorcery.framework.bundles.simpleStats.StatsTools;
+using sorcery.framework.bundles.simpleStats.SimpleStatsTools;
 /**
  * ...
  * @author Dmitriy Kolesnik
@@ -17,6 +17,7 @@ class StatManagerComponent extends Component
 	public function new(p_core:ICore, ?p_statManager:IStatManager) 
 	{
 		super(p_core);
+		
 		if (p_statManager == null)
 			statManager = new StatManager(core.getStatCatalog());
 		else

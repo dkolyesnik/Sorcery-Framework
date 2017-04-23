@@ -1,14 +1,14 @@
-package sorcery.framework.bundles.stats.components;
+package sorcery.framework.bundles.simpleStats.components;
 
 import sorcery.core.Behavior;
 import sorcery.core.Component;
 import sorcery.core.abstracts.Path;
 import sorcery.core.interfaces.ICore;
 import sorcery.core.interfaces.IEntityChildLink;
-import sorcery.framework.bundles.stats.abstracts.StatId;
-import sorcery.framework.bundles.stats.components.StatManagerComponent;
-import sorcery.framework.bundles.stats.interfaces.IStatManager;
-import sorcery.framework.bundles.stats.interfaces.IStatMod;
+import sorcery.framework.bundles.simpleStats.abstracts.StatId;
+import sorcery.framework.bundles.simpleStats.components.StatManagerComponent;
+import sorcery.framework.bundles.simpleStats.interfaces.IStatManager;
+import sorcery.framework.bundles.simpleStats.interfaces.IStatMod;
 import sorcery.macros.Nullsafety.*;
 /**
  * ...
@@ -34,6 +34,6 @@ class StatModComponent extends Behavior{
 	}
 	
 	override function onRemovedFromRoot():Void {
-		_statMod.removeFromManager();
+		_statMod.getManager().removeMod(_statMod);
 	}
 }
