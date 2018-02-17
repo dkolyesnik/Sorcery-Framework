@@ -60,7 +60,7 @@ class Sorcery
 	static function createLink(path:Path, parent:IEntity):IEntityChildLink
 	{
 		if (parent != null)
-			_behavior.createLink2(path.toFullName(parent));
+			_behavior.createLink2(path);
 			
 		return _behavior.createLink2(path);
 	}
